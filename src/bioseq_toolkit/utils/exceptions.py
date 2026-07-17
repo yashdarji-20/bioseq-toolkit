@@ -21,3 +21,6 @@ class BioSeqError(Exception):
 
 class InvalidSequenceError(BioSeqError):
     """Raised when a sequence contains characters outside its alphabet."""
+
+class FileFormatError(BioSeqError):
+    """Raised when a file cannot be parsed as the expected format (e.g. FASTA)."""
