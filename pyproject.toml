@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bioseq-toolkit"
+version = "0.1.0"
+description = "A professional DNA, RNA, and Protein sequence analysis toolkit built in pure Python."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [{ name = "Yash Darji", email = "yddarji2006@gmail.com" }]
+keywords = ["bioinformatics", "dna", "rna", "protein", "sequence-analysis"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "pytest-cov>=5.0", "black>=24.0", "ruff>=0.5", "mypy>=1.10"]
+
+[project.scripts]
+bioseq = "bioseq_toolkit.cli.main:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --cov=bioseq_toolkit --cov-report=term-missing"
+
+[tool.black]
+line-length = 88
+
+[tool.ruff]
+line-length = 88

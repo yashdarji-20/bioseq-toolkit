@@ -1,0 +1,3 @@
+# Runtime dependencies for BioSeq Toolkit.
+# Version 1 uses only the Python standard library.
+# Pin dependencies here as the project grows.
