@@ -1,50 +1,70 @@
-The design keeps a strict separation of concerns: `core` contains pure logic
-with no knowledge of files or the command line, so the same functions power
-both the CLI and (in a later version) a web interface.
+# 🧬 BioSeq Toolkit
 
-## Biological Background
+> A professional DNA, RNA, and Protein sequence analysis toolkit built entirely in Python.
 
-**GC content** is the percentage of bases that are guanine or cytosine. Because
-G–C pairs are held by three hydrogen bonds versus two for A–T, GC-rich DNA is
-more thermally stable — a fact used in primer design and organism classification.
+[![Python](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Tests](https://img.shields.io/badge/tests-110%20passing-brightgreen.svg)](tests/)
+[![Coverage](https://img.shields.io/badge/coverage-98%25-brightgreen.svg)](tests/)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-**Transcription** copies DNA into messenger RNA (every `T` becomes `U`), and
-**translation** reads that RNA in three-base *codons*, each specifying one amino
-acid, until a stop codon is reached. Together these form the *central dogma* of
-molecular biology: DNA → RNA → protein.
+---
 
-**Melting temperature (Tm)** estimates the temperature at which a DNA duplex
-separates into single strands — essential for designing PCR primers.
+## Overview
 
-## Testing
+**BioSeq Toolkit** is a command-line tool and Python library for common
+bioinformatics sequence-analysis tasks — sequence validation, GC content,
+transcription, translation, FASTA parsing, and more — implemented from scratch
+in pure Python with a clean, modular, fully-tested architecture.
 
-The project has **110 unit tests** with **98% code coverage**. Run them with:
+It is designed to demonstrate professional software-engineering practices:
+separation of concerns, comprehensive unit testing, type safety, custom
+exceptions, and a proper command-line interface.
+
+## Motivation
+
+Most bioinformatics scripting is quick and disposable. This project takes the
+opposite approach: treat a small scientific toolkit as production software.
+Every function is validated, type-hinted, documented, and tested; the code is
+organized into clear layers (`core`, `io`, `cli`, `utils`); and the whole thing
+installs and runs as a real command-line tool. The goal is a codebase that
+reads the way professional software is built, not the way a homework script is.
+
+## Features
+
+**Validation** — check whether a sequence is well-formed DNA, RNA, or protein.
+
+**Composition** — GC content, AT content, and per-base nucleotide frequency.
+
+**Transformation** — complement, reverse complement, and DNA→RNA transcription.
+
+**Translation** — DNA→protein translation with configurable stop-codon handling.
+
+**Statistics** — length, molecular weight, and melting temperature (Wallace rule),
+bundled into a typed result.
+
+**FASTA I/O** — read and write multi-record FASTA files with multi-line sequence
+support.
+
+**Command-line interface** — a `bioseq` command with `gc`, `reverse`,
+`translate`, and `stats` subcommands.
+
+## Installation
+
+Requires Python 3.10 or newer.
 
 ```bash
-pytest
+git clone https://github.com/yashdarji-20/bioseq-toolkit.git
+cd bioseq-toolkit
+
+python -m venv .venv
+source .venv/bin/activate         # Windows: .venv\Scripts\activate
+
+pip install -e ".[dev]"           # installs the package plus dev tools
 ```
 
-Tests cover happy paths, edge cases (empty input, whitespace, wrong alphabet),
-error handling, and mathematical invariants (e.g. the reverse complement of a
-reverse complement returns the original sequence).
+## Usage
 
-## Code Quality
+### Command line
 
-Code quality is enforced with three tools, all configured in `pyproject.toml`:
-
-```bash
-ruff check src tests    # linting
-black src tests         # formatting
-mypy src                # static type checking
-```
-
-## Future Improvements
-
-- **Version 2:** ORF finder, restriction-enzyme search, motif finder, SNP
-  detection, sequence alignment, primer analysis.
-- **Version 3:** Streamlit web application, Docker support, PyPI packaging,
-  and GitHub Actions for continuous integration.
-
-## License
-
-Distributed under the MIT License. See [LICENSE](LICENSE) for details.
+Given a FASTA file `data/sample.fasta`:
