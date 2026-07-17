@@ -60,8 +60,8 @@ class TestTranslateCommand:
     ) -> None:
         main(["translate", str(sample_fasta)])
         out = capsys.readouterr().out
-        assert "MA" in out       # seq1 translates to MA
-        assert "MKRT" in out     # seq2 translates to MKRT
+        assert "MA" in out  # seq1 translates to MA
+        assert "MKRT" in out  # seq2 translates to MKRT
 
 
 class TestStatsCommand:

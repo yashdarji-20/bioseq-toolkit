@@ -68,7 +68,7 @@ def read_fasta(path: str | Path) -> list[FastaRecord]:
             if not line:
                 continue  # skip blank lines
             if line.startswith(">"):
-                _flush()                       # close the previous record
+                _flush()  # close the previous record
                 current_id = line[1:].strip()  # drop '>' and surrounding space
                 current_seq = []
             else:

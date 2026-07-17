@@ -23,10 +23,10 @@ class TestIsValidDna:
     @pytest.mark.parametrize(
         "sequence",
         [
-            "ATCG",          # canonical
-            "atcg",          # lowercase is normalized
-            "  ATCG  ",      # surrounding whitespace is stripped
-            "AAAA",          # single-base repeats are fine
+            "ATCG",  # canonical
+            "atcg",  # lowercase is normalized
+            "  ATCG  ",  # surrounding whitespace is stripped
+            "AAAA",  # single-base repeats are fine
             "ATCGATCGATCG",  # longer sequence
         ],
     )
@@ -36,11 +36,11 @@ class TestIsValidDna:
     @pytest.mark.parametrize(
         "sequence",
         [
-            "",         # empty is not a sequence
-            "   ",      # whitespace-only is empty after strip
-            "ATCGX",    # X is not a base
-            "ATCGN",    # N (ambiguity) rejected in v1
-            "AUCG",     # U belongs to RNA, not DNA
+            "",  # empty is not a sequence
+            "   ",  # whitespace-only is empty after strip
+            "ATCGX",  # X is not a base
+            "ATCGN",  # N (ambiguity) rejected in v1
+            "AUCG",  # U belongs to RNA, not DNA
             "ATCG123",  # digits are not bases
         ],
     )
@@ -58,8 +58,8 @@ class TestIsValidRna:
     @pytest.mark.parametrize(
         "sequence",
         [
-            "",       # empty
-            "ATCG",   # T belongs to DNA, not RNA
+            "",  # empty
+            "ATCG",  # T belongs to DNA, not RNA
             "AUCGX",  # X is not a base
         ],
     )
@@ -77,7 +77,7 @@ class TestIsValidProtein:
     @pytest.mark.parametrize(
         "sequence",
         [
-            "",      # empty
+            "",  # empty
             "MKLB",  # B is not one of the 20 standard amino acids
             "MKL1",  # digit
         ],

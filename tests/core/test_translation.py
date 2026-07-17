@@ -18,10 +18,10 @@ class TestTranslate:
     @pytest.mark.parametrize(
         ("sequence", "expected"),
         [
-            ("ATG", "M"),            # single start codon -> Methionine
-            ("ATGAAACGT", "MKR"),    # Met-Lys-Arg, a known translation
-            ("ATGGCT", "MA"),        # Met-Ala
-            ("atgaaacgt", "MKR"),    # lowercase is normalized
+            ("ATG", "M"),  # single start codon -> Methionine
+            ("ATGAAACGT", "MKR"),  # Met-Lys-Arg, a known translation
+            ("ATGGCT", "MA"),  # Met-Ala
+            ("atgaaacgt", "MKR"),  # lowercase is normalized
         ],
     )
     def test_translate_known_sequences(self, sequence: str, expected: str) -> None:
@@ -45,8 +45,8 @@ class TestTranslate:
     @pytest.mark.parametrize(
         ("sequence", "expected"),
         [
-            ("ATGGC", "M"),     # 5 bases: [ATG] translated, "GC" dropped
-            ("ATGA", "M"),      # 4 bases: [ATG] translated, "A" dropped
+            ("ATGGC", "M"),  # 5 bases: [ATG] translated, "GC" dropped
+            ("ATGA", "M"),  # 4 bases: [ATG] translated, "A" dropped
             ("ATGAAAC", "MK"),  # 7 bases: [ATG][AAA] translated, "C" dropped
         ],
     )

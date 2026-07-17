@@ -27,7 +27,7 @@ class TestComplement:
             ("ATCG", "TAGC"),
             ("AAAA", "TTTT"),
             ("GGCC", "CCGG"),
-            ("atcg", "TAGC"),   # lowercase normalized
+            ("atcg", "TAGC"),  # lowercase normalized
         ],
     )
     def test_complement_value(self, sequence: str, expected: str) -> None:
@@ -47,7 +47,7 @@ class TestReverseComplement:
             ("ATCG", "CGAT"),
             ("AAAACCCGGT", "ACCGGGTTTT"),
             ("GGGG", "CCCC"),
-            ("  atcg ", "CGAT"),   # normalized
+            ("  atcg ", "CGAT"),  # normalized
         ],
     )
     def test_reverse_complement_value(self, sequence: str, expected: str) -> None:
@@ -74,8 +74,8 @@ class TestTranscribe:
         [
             ("ATCG", "AUCG"),
             ("TTTT", "UUUU"),
-            ("ACGACG", "ACGACG"),   # no T -> unchanged
-            ("atcg", "AUCG"),       # normalized
+            ("ACGACG", "ACGACG"),  # no T -> unchanged
+            ("atcg", "AUCG"),  # normalized
         ],
     )
     def test_transcribe_value(self, sequence: str, expected: str) -> None:

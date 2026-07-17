@@ -15,9 +15,6 @@ Validation rules (Version 1):
 from __future__ import annotations
 
 from bioseq_toolkit.utils.constants import (
-    AMINO_ACIDS,
-    DNA_BASES,
-    RNA_BASES,
     SequenceType,
     VALID_CHARACTERS,
 )

@@ -23,12 +23,12 @@ class TestGcContent:
     @pytest.mark.parametrize(
         ("sequence", "expected"),
         [
-            ("GGCC", 100.0),      # all G/C
-            ("AATT", 0.0),        # no G/C
-            ("ATCG", 50.0),       # half
-            ("  atgc ", 50.0),    # normalized (whitespace + lowercase)
-            ("ATGGG", 60.0),      # 3 of 5
-            ("ATG", 100 / 3),     # repeating decimal -> needs approx
+            ("GGCC", 100.0),  # all G/C
+            ("AATT", 0.0),  # no G/C
+            ("ATCG", 50.0),  # half
+            ("  atgc ", 50.0),  # normalized (whitespace + lowercase)
+            ("ATGGG", 60.0),  # 3 of 5
+            ("ATG", 100 / 3),  # repeating decimal -> needs approx
         ],
     )
     def test_gc_content_value(self, sequence: str, expected: float) -> None:
