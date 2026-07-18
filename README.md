@@ -2,6 +2,7 @@
 
 > A professional DNA, RNA, and Protein sequence analysis toolkit built entirely in Python.
 
+[![CI](https://github.com/yashdarji-20/bioseq-toolkit/actions/workflows/ci.yml/badge.svg)](https://github.com/yashdarji-20/bioseq-toolkit/actions/workflows/ci.yml)
 [![Python](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Tests](https://img.shields.io/badge/tests-264%20passing-brightgreen.svg)](tests/)
